@@ -1,0 +1,34 @@
+#!/bin/bash
+
+# set -f
+
+# resultLine=""
+
+# wmctrl -d | while read line; do
+# 	testResult=$(echo "$line" | grep "\*")
+# 	currentWorkspace=$(echo "$line" | grep "*" | cut -d ' ' -f 1)
+# 	if [[ "$testResult" == "" ]]; then
+# 		echo -n "| | "
+# 	else
+# 		echo -n "|🦎| "
+# 	fi
+# done
+
+ACTIVE=''
+END=''
+ 
+#set -f
+ 
+wmctrl -d | while read line
+do
+  echo "$line" | grep '*' > /dev/null           #grep return 0 if something find and 1 if nothind
+  is_active=$?
+ 
+  if [[ $is_active = 0 ]]; then
+    name="$ACTIVE"
+  else
+    name="$(echo $line | awk '{ print $1 }')"
+  fi
+
+  END=echo -n " $name |"
+done

@@ -1,0 +1,3 @@
+app-editors/emacs gui jit xft gtk cairo harfbuzz threads dynamic-loading
+>=app-emacs/emacs-common-1.10 gui
+sys-devel/gcc jit
